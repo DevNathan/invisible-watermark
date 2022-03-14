@@ -92,12 +92,15 @@ def main():
             WatermarkDecoder.loadModel()
         bgr = cv2.imread(args.input)
         start = time.time()
+        print("bgr ",  bgr )
+        print(args.method)
         wm = decoder.decode(bgr, args.method)
+        print("wm" , wm)
         if args.verbose:
             print('decode time ms:', (time.time()-start) * 1000)
         if args.type in ['bytes', 'b16']:
             wm = wm.decode('utf-8')
-        print(wm)
+        print("decoded :" , wm)
     else:
         sys.stderr.write('unknown action\n')
         sys.exit(1)

@@ -45,10 +45,12 @@ class EmbedMaxDct(object):
             ca1,(h1,v1,d1) = pywt.dwt2(yuv[:row//4*4,:col//4*4,channel], 'haar')
 
             scores = self.decode_frame(ca1, self._scales[channel], scores)
-
+        print("ca1 =", ca1 )
         avgScores = list(map(lambda l: np.array(l).mean(), scores))
-
+        print("bite =", avgScores)
         bits = (np.array(avgScores) * 255 > 127)
+        #bits = np.array[]
+        print(np.array(avgScores))
         return bits
 
     def decode_frame(self, frame, scale, scores):

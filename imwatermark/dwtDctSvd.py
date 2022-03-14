@@ -47,7 +47,7 @@ class EmbedDwtDctSvd(object):
             scores = self.decode_frame(ca1, self._scales[channel], scores)
 
         avgScores = list(map(lambda l: np.array(l).mean(), scores))
-
+        print("bite = ", avgScores)
         bits = (np.array(avgScores) * 255 > 127)
         return bits
 

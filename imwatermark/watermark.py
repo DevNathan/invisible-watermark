@@ -154,8 +154,11 @@ class WatermarkDecoder(object):
 
         bits = []
         if method == 'dwtDct':
+
             embed = EmbedMaxDct(watermarks=[], wmLen=self._wmLen, **configs)
+            print("embed =" , embed)
             bits = embed.decode(cv2Image)
+            print(bits)
         elif method == 'dwtDctSvd':
             embed = EmbedDwtDctSvd(watermarks=[], wmLen=self._wmLen, **configs)
             bits = embed.decode(cv2Image)
